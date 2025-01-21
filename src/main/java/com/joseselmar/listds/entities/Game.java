@@ -16,18 +16,20 @@ public class Game {
     private String title;
     @Column(name="game_year")
     private Integer year;
-    private String gener;
+    private String genre;
     private String platforms;
     private Double score;
     private String imgUrl;
+    @Column(columnDefinition="TEXT")
     private String shortDescription;
+    @Column(columnDefinition="TEXT")
     private String longDescription;
 
     public Game() {
     }
 
     public Game(String gener, Long id, String imgUrl, String longDescription, String platforms, Double score, String shortDescription, String title, Integer year) {
-        this.gener = gener;
+        this.genre = gener;
         this.id = id;
         this.imgUrl = imgUrl;
         this.longDescription = longDescription;
@@ -63,12 +65,12 @@ public class Game {
         this.year = year;
     }
 
-    public String getGener() {
-        return gener;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setGener(String gener) {
-        this.gener = gener;
+    public void setGenre(String gener) {
+        this.genre = gener;
     }
 
     public String getPlatforms() {
@@ -113,7 +115,7 @@ public class Game {
     
     @Override
     public String toString() {
-        return "Game [id=" + id + ", title=" + title + ", year=" + year + ", gener=" + gener + ", platforms="
+        return "Game [id=" + id + ", title=" + title + ", year=" + year + ", gener=" + genre + ", platforms="
                 + platforms + ", score=" + score + ", imgUrl=" + imgUrl + ", shortDescription=" + shortDescription
                 + ", longDescription=" + longDescription + "]";
     }
@@ -125,7 +127,7 @@ public class Game {
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((title == null) ? 0 : title.hashCode());
         result = prime * result + ((year == null) ? 0 : year.hashCode());
-        result = prime * result + ((gener == null) ? 0 : gener.hashCode());
+        result = prime * result + ((genre == null) ? 0 : genre.hashCode());
         return result;
     }
 
@@ -153,10 +155,10 @@ public class Game {
                 return false;
         } else if (!year.equals(other.year))
             return false;
-        if (gener == null) {
-            if (other.gener != null)
+        if (genre == null) {
+            if (other.genre != null)
                 return false;
-        } else if (!gener.equals(other.gener))
+        } else if (!genre.equals(other.genre))
             return false;
         return true;
     }
