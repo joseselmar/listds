@@ -1,12 +1,12 @@
 package com.joseselmar.listds.dto;
 
 import com.joseselmar.listds.entities.Game;
+import com.joseselmar.listds.projection.GameMinProjection;
 
 public class GameMinDTO {
     private Long id;
     private String title;
     private Integer year;
-    private String genre;
     private String imgUrl;
     private String shortDescription;
     
@@ -14,12 +14,21 @@ public class GameMinDTO {
     }
 
     public GameMinDTO(Game entity) {
-        this.genre = entity.getGenre();
         this.id = entity.getId();
         this.imgUrl = entity.getImgUrl();
         this.shortDescription = entity.getShortDescription();
         this.title = entity.getTitle();
         this.year = entity.getYear();
+    }
+
+    
+
+    public GameMinDTO(GameMinProjection projection) {
+        this.id = projection.getId();
+        this.title = projection.getTitle();
+        this.year = projection.getYear();
+        this.imgUrl = projection.getImgUrl();
+        this.shortDescription = projection.getShortDescription();
     }
 
     public Long getId() {
@@ -32,10 +41,6 @@ public class GameMinDTO {
 
     public Integer getYear() {
         return year;
-    }
-
-    public String getGenre() {
-        return genre;
     }
 
     public String getImgUrl() {
